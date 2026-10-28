@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Indicadores Web</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Painel de Indicadores Web</h1>
+      <p>Comparação entre gráficos Canvas e SVG</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="introducao">
+      <h2>Apresentação</h2>
+      <p>
+        Este projeto apresenta os indicadores de domínio de quatro
+        tecnologias utilizadas no desenvolvimento front-end:
+        HTML, CSS, JavaScript e SVG.
+      </p>
+      <p>
+        Os mesmos dados foram representados em dois gráficos de
+        barras, utilizando Canvas e SVG, para comparar suas
+        características e formas de implementação.
+      </p>
+    </section>
+
+    <div class="graficos">
+
+      <section class="card">
+        <h2>Gráfico com Canvas</h2>
+        <p>
+          Gráfico desenhado utilizando JavaScript e o
+          contexto de renderização 2D do Canvas.
+        </p>
+
+        <div class="area-grafico">
+          <canvas
+            id="graficoCanvas"
+            width="700"
+            height="360"
+            role="img"
+            aria-label="HTML 85, CSS 72, JavaScript 64 e SVG 55">
+            Seu navegador não suporta Canvas.
+          </canvas>
+        </div>
+
+        <p class="orientacao">
+          Clique em uma barra para visualizar seu valor.
+        </p>
+
+        <p id="selecaoCanvas" class="resultado" aria-live="polite">
+          Nenhuma barra selecionada.
+        </p>
+
+        <div class="descricao">
+          <h3>Dados apresentados</h3>
+          <p>HTML: 85 | CSS: 72 | JavaScript: 64 | SVG: 55</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Gráfico com SVG</h2>
+        <p>
+          Gráfico construído com elementos SVG, permitindo
+          manipular cada barra individualmente.
+        </p>
+
+        <div class="area-grafico">
+          <svg
+            id="graficoSvg"
+            viewBox="0 0 700 360"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-labelledby="tituloSvg descricaoSvg">
+
+            <title id="tituloSvg">Gráfico de indicadores SVG</title>
+            <desc id="descricaoSvg">
+              HTML 85, CSS 72, JavaScript 64 e SVG 55.
+            </desc>
+
+            <!-- Linhas de referência -->
+            <g class="linhas">
+              <line x1="60" y1="60" x2="650" y2="60"/>
+              <line x1="60" y1="120" x2="650" y2="120"/>
+              <line x1="60" y1="180" x2="650" y2="180"/>
+              <line x1="60" y1="240" x2="650" y2="240"/>
+              <line x1="60" y1="300" x2="650" y2="300"/>
+            </g>
+
+            <!-- Valores do eixo -->
+            <g class="eixo">
+              <text x="48" y="64">100</text>
+              <text x="48" y="124">75</text>
+              <text x="48" y="184">50</text>
+              <text x="48" y="244">25</text>
+              <text x="48" y="304">0</text>
+            </g>
+
+            <!-- HTML -->
+            <g class="barra-svg" tabindex="0" role="button"
+               aria-label="HTML: 85 pontos"
+               data-rotulo="HTML" data-valor="85">
+              <rect id="barraHTML"
+                    x="90" y="96" width="90" height="204"
+                    fill="#3769bb"/>
+              <text class="valor" x="135" y="84">85</text>
+              <text class="rotulo" x="135" y="330">HTML</text>
+            </g>
+
+            <!-- CSS -->
+            <g class="barra-svg" tabindex="0" role="button"
+               aria-label="CSS: 72 pontos"
+               data-rotulo="CSS" data-valor="72">
+              <rect x="230" y="127.2" width="90" height="172.8"
+                    fill="#429678"/>
+              <text class="valor" x="275" y="115">72</text>
+              <text class="rotulo" x="275" y="330">CSS</text>
+            </g>
+
+            <!-- JavaScript -->
+            <g class="barra-svg" tabindex="0" role="button"
+               aria-label="JavaScript: 64 pontos"
+               data-rotulo="JavaScript" data-valor="64">
+              <rect x="370" y="146.4" width="90" height="153.6"
+                    fill="#d39535"/>
+              <text class="valor" x="415" y="134">64</text>
+              <text class="rotulo" x="415" y="330">JavaScript</text>
+            </g>
+
+            <!-- SVG -->
+            <g class="barra-svg" tabindex="0" role="button"
+               aria-label="SVG: 55 pontos"
+               data-rotulo="SVG" data-valor="55">
+              <rect x="510" y="168" width="90" height="132"
+                    fill="#8a70b4"/>
+              <text class="valor" x="555" y="156">55</text>
+              <text class="rotulo" x="555" y="330">SVG</text>
+            </g>
+
+          </svg>
+        </div>
+
+        <p class="orientacao">
+          Clique em uma barra ou utilize Enter para selecioná-la.
+        </p>
+
+        <p id="selecaoSvg" class="resultado" aria-live="polite">
+          Nenhuma barra selecionada.
+        </p>
+
+        <div class="descricao">
+          <h3>Dados apresentados</h3>
+          <p>HTML: 85 | CSS: 72 | JavaScript: 64 | SVG: 55</p>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="card tabela-dados">
+      <h2>Tabela de indicadores</h2>
+      <p>
+        Valores utilizados nos dois gráficos, considerando
+        uma escala de 0 a 100.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tecnologia</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>HTML</td><td>85</td></tr>
+          <tr><td>CSS</td><td>72</td></tr>
+          <tr><td>JavaScript</td><td>64</td></tr>
+          <tr><td>SVG</td><td>55</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      Desenvolvimento Front-End para Web |
+      Mini-Projeto Integrador
+    </p>
+  </footer>
+
+</body>
+</html>
